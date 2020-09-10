@@ -1,0 +1,26 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+
+    # If the hostname is mineriailegal.amazoniasocioambiental.org
+    RewriteCond %{HTTP_HOST} ^mineriailegal\.amazoniasocioambiental\.org$
+    RewriteCond %{QUERY_STRING} !(^|&)lang=es($|&)
+    # 301 redirect to the same resource on mineriailegal.amazoniasocioambiental.org
+    RewriteRule ^ https://mineriailegal.amazoniasocioambiental.org%{REQUEST_URI}?lang=es [R=301,L,NE]
+
+    # If the hostname is illegalmining.amazoniasocioambiental.org
+    RewriteCond %{HTTP_HOST} ^illegalmining\.amazoniasocioambiental\.org$
+    RewriteCond %{QUERY_STRING} !(^|&)lang=en($|&)
+    # 301 redirect to the same resource on illegalmining.amazoniasocioambiental.org
+    RewriteRule ^ https://illegalmining.amazoniasocioambiental.org%{REQUEST_URI}?lang=en [R=301,L,NE]
+
+    # If the hostname is garimpoilegal.amazoniasocioambiental.org
+    RewriteCond %{HTTP_HOST} ^garimpoilegal\.amazoniasocioambiental\.org$
+    RewriteCond %{QUERY_STRING} !(^|&)lang=pt($|&)
+    # 301 redirect to the same resource on garimpoilegal.amazoniasocioambiental.org
+    RewriteRule ^ https://garimpoilegal.amazoniasocioambiental.org%{REQUEST_URI}?lang=pt [R=301,L,NE]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+ </IfModule>
+

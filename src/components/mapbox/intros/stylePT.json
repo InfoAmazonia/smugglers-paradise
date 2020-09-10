@@ -1,0 +1,1481 @@
+{
+    "version": 8,
+    "name": "ArcoMinero2_MapaInicial_PT",
+    "metadata": {
+        "mapbox:type": "default",
+        "mapbox:origin": "light-v10",
+        "mapbox:autocomposite": true,
+        "mapbox:groups": {
+            "478abe35ea61c31d3e5f2688b69664de": {
+                "name": "polyline_separadas_Group",
+                "collapsed": false
+            },
+            "dae213f8070bc16dbbeb3e9e2e63e9c5": {
+                "name": "Lugares Labels Group",
+                "collapsed": false
+            },
+            "Base, land": {"name": "Base, land", "collapsed": true},
+            "Base, water": {"name": "Base, water", "collapsed": true},
+            "Administrative boundaries": {
+                "name": "Administrative boundaries",
+                "collapsed": false
+            }
+        },
+        "mapbox:propConfigToc": {
+            "propConfig": {
+                "buildings": {"houseNumbers": false},
+                "base": {"landuseLandcoverStyle": "simple"},
+                "natural-labels": {"labelStyle": "Text only", "density": 1},
+                "point-of-interest-labels": {
+                    "labelStyle": "Text only",
+                    "density": 1
+                },
+                "road-network": {
+                    "highwayStyle": "Simple",
+                    "shields": false,
+                    "aerialways": false,
+                    "pathStyle": "Simple",
+                    "levelCrossings": false,
+                    "oneWayArrows": false,
+                    "railwayStyle": "Solid",
+                    "exits": false,
+                    "polygonFeatures": false,
+                    "ferries": false
+                },
+                "transit-labels": {
+                    "transitLabelStyle": "Text only",
+                    "transit": false
+                },
+                "__global__": {
+                    "color-scheme": "monochrome",
+                    "monochrome-base": "hsl(0, 0%, 37%)"
+                }
+            },
+            "components": [
+                {"propConfig": {}, "components": [], "id": "base"},
+                {"propConfig": {}, "components": [], "id": "buildings"},
+                {"propConfig": {}, "components": [], "id": "road-network"},
+                {"propConfig": {}, "components": [], "id": "admin-boundaries"},
+                {"propConfig": {}, "components": [], "id": "natural-labels"},
+                {
+                    "propConfig": {},
+                    "components": [],
+                    "id": "point-of-interest-labels"
+                },
+                {"propConfig": {}, "components": [], "id": "transit-labels"},
+                {"propConfig": {}, "components": [], "id": "place-labels"}
+            ],
+            "id": "monochrome-v1"
+        },
+        "mapbox:sdk-support": {
+            "js": "0.54.0",
+            "android": "6.7.0",
+            "ios": "4.7.0"
+        },
+        "mapbox:trackposition": true
+    },
+    "center": [-45.82773805568468, 28.28941137644125],
+    "zoom": 3.1796657257537295,
+    "bearing": 0,
+    "pitch": 0,
+    "sources": {
+        "mapbox://mapbox.terrain-rgb": {
+            "url": "mapbox://mapbox.terrain-rgb",
+            "type": "raster-dem",
+            "tileSize": 256
+        },
+        "composite": {
+            "url": "mapbox://infoamazonia.cjxmkdnq324pu2nqusoswyu6l-5tnks,infoamazonia.1w2pvk3g,mapbox.mapbox-streets-v8,infoamazonia.1au4b3cu,infoamazonia.430srds2,infoamazonia.6ny4aw4g,infoamazonia.cr9nv4y3,infoamazonia.2p8fbtjj,infoamazonia.27ukze8w,mapbox.mapbox-terrain-v2",
+            "type": "vector"
+        }
+    },
+    "sprite": "mapbox://sprites/infoamazonia/cjxqsvsg00mvv1clhwyypn82y/0wmb0880qzhhxx21etlmdcqni",
+    "glyphs": "mapbox://fonts/infoamazonia/{fontstack}/{range}.pbf",
+    "layers": [
+        {
+            "id": "land",
+            "type": "background",
+            "metadata": {
+                "mapbox:featureComponent": "base",
+                "mapbox:group": "Base, land"
+            },
+            "layout": {},
+            "paint": {"background-color": "#ebebeb", "background-opacity": 1}
+        },
+        {
+            "id": "landcover",
+            "type": "fill",
+            "metadata": {
+                "mapbox:featureComponent": "base",
+                "mapbox:group": "Base, land"
+            },
+            "source": "composite",
+            "source-layer": "landcover",
+            "layout": {},
+            "paint": {
+                "fill-color": "hsl(0, 0%, 24%)",
+                "fill-antialias": false,
+                "fill-opacity": 0.5
+            }
+        },
+        {
+            "id": "mapbox-terrain-rgb",
+            "type": "hillshade",
+            "source": "mapbox://mapbox.terrain-rgb",
+            "layout": {},
+            "paint": {
+                "hillshade-highlight-color": "#8f8f8f",
+                "hillshade-accent-color": "hsl(0, 4%, 0%)",
+                "hillshade-exaggeration": 1,
+                "hillshade-illumination-direction": 359
+            }
+        },
+        {
+            "id": "arcominero-MASK",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "ArcoMinero_Mask-33x74b",
+            "layout": {},
+            "paint": {
+                "fill-opacity": 0.6,
+                "fill-outline-color": "hsla(0, 0%, 100%, 0)"
+            }
+        },
+        {
+            "id": "water-shadow",
+            "type": "fill",
+            "metadata": {
+                "mapbox:featureComponent": "base",
+                "mapbox:group": "Base, water"
+            },
+            "source": "composite",
+            "source-layer": "water",
+            "layout": {},
+            "paint": {
+                "fill-color": "hsl(192, 47%, 17%)",
+                "fill-translate": [
+                    "interpolate",
+                    ["exponential", 1.2],
+                    ["zoom"],
+                    7,
+                    ["literal", [0, 0]],
+                    16,
+                    ["literal", [-1, -1]]
+                ],
+                "fill-translate-anchor": "viewport"
+            }
+        },
+        {
+            "id": "water",
+            "type": "fill",
+            "metadata": {
+                "mapbox:featureComponent": "base",
+                "mapbox:group": "Base, water"
+            },
+            "source": "composite",
+            "source-layer": "water",
+            "layout": {},
+            "paint": {"fill-color": "hsl(194, 49%, 8%)"}
+        },
+        {
+            "id": "waterway",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "base",
+                "mapbox:group": "Base, water"
+            },
+            "source": "composite",
+            "source-layer": "waterway",
+            "minzoom": 4,
+            "layout": {
+                "line-cap": ["step", ["zoom"], "butt", 11, "round"],
+                "line-join": "round"
+            },
+            "paint": {
+                "line-color": "hsl(187, 52%, 18%)",
+                "line-width": [
+                    "interpolate",
+                    ["exponential", 1.3],
+                    ["zoom"],
+                    5,
+                    ["match", ["get", "class"], ["canal", "river"], 0.5, 0],
+                    20,
+                    ["match", ["get", "class"], ["canal", "river"], 8, 3]
+                ],
+                "line-opacity": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    4,
+                    0.1,
+                    7,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "admin-0-boundaryPAIS",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "admin-boundaries",
+                "mapbox:group": "Administrative boundaries"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                ["==", ["get", "admin_level"], 0],
+                ["==", ["get", "disputed"], "false"],
+                ["==", ["get", "maritime"], "false"],
+                ["match", ["get", "worldview"], ["all", "US"], true, false]
+            ],
+            "layout": {"line-join": "round", "line-cap": "round"},
+            "paint": {
+                "line-blur": 0.5,
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    0.7,
+                    10,
+                    2
+                ],
+                "line-gap-width": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["CO-VE"],
+                    0,
+                    0
+                ],
+                "line-color": "hsl(0, 2%, 43%)"
+            }
+        },
+        {
+            "id": "CO-VE_admin-0-boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "admin-boundaries",
+                "mapbox:group": "Administrative boundaries"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                ["==", ["get", "admin_level"], 0],
+                ["==", ["get", "disputed"], "false"],
+                ["==", ["get", "maritime"], "false"],
+                ["match", ["get", "worldview"], ["all", "US"], true, false]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["CO-VE"],
+                    "#c7c7c7",
+                    "hsla(0, 0%, 4%, 0)"
+                ],
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    0.5,
+                    10,
+                    2
+                ],
+                "line-gap-width": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["CO-VE"],
+                    5,
+                    0
+                ],
+                "line-blur": 0,
+                "line-opacity": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["CO-VE"],
+                    1,
+                    0
+                ],
+                "line-dasharray": [5, 5]
+            }
+        },
+        {
+            "id": "VE_admin-0-boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "admin-boundaries",
+                "mapbox:group": "Administrative boundaries"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                ["==", ["get", "admin_level"], 0],
+                ["==", ["get", "disputed"], "false"],
+                ["==", ["get", "maritime"], "false"],
+                ["match", ["get", "worldview"], ["all", "US"], true, false]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": "hsl(0, 2%, 43%)",
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    0.5,
+                    5.6,
+                    1.5,
+                    10,
+                    2
+                ],
+                "line-gap-width": 0,
+                "line-blur": 0,
+                "line-opacity": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["CO-VE", "BR-VE", "GY-VE"],
+                    1,
+                    0
+                ]
+            }
+        },
+        {
+            "id": "CO_admin-0-boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "admin-boundaries",
+                "mapbox:group": "Administrative boundaries"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                ["==", ["get", "admin_level"], 0],
+                ["==", ["get", "disputed"], "false"],
+                ["==", ["get", "maritime"], "false"],
+                ["match", ["get", "worldview"], ["all", "US"], true, false]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": "hsl(0, 2%, 43%)",
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    0.5,
+                    5.49,
+                    1.7,
+                    10,
+                    2
+                ],
+                "line-gap-width": 0,
+                "line-blur": 0,
+                "line-opacity": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["CO-VE", "CO-PA", "BR-CO", "CO-PE", "CO-EC"],
+                    1,
+                    0
+                ]
+            }
+        },
+        {
+            "id": "NL_admin-0-boundary",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "admin-boundaries",
+                "mapbox:group": "Administrative boundaries"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                ["==", ["get", "admin_level"], 0],
+                ["==", ["get", "disputed"], "false"],
+                ["==", ["get", "maritime"], "false"],
+                ["match", ["get", "worldview"], ["all", "US"], true, false]
+            ],
+            "layout": {
+                "line-join": "round",
+                "line-cap": "round",
+                "visibility": "none"
+            },
+            "paint": {
+                "line-color": "hsl(0, 0%, 72%)",
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    1.5,
+                    10,
+                    2
+                ],
+                "line-gap-width": 0,
+                "line-blur": 0,
+                "line-opacity": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["BE-NL", "DE-NL"],
+                    1,
+                    0
+                ]
+            }
+        },
+        {
+            "id": "admin-0-boundary-disputed",
+            "type": "line",
+            "metadata": {
+                "mapbox:featureComponent": "admin-boundaries",
+                "mapbox:group": "Administrative boundaries"
+            },
+            "source": "composite",
+            "source-layer": "admin",
+            "minzoom": 1,
+            "filter": [
+                "all",
+                ["==", ["get", "disputed"], "true"],
+                ["==", ["get", "admin_level"], 0],
+                ["==", ["get", "maritime"], "false"],
+                ["match", ["get", "worldview"], ["all", "US"], true, false]
+            ],
+            "layout": {"line-join": "round"},
+            "paint": {
+                "line-width": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    0.5,
+                    10,
+                    2
+                ],
+                "line-color": "hsl(0, 2%, 43%)",
+                "line-blur": 0.5,
+                "line-opacity": [
+                    "match",
+                    ["get", "iso_3166_1"],
+                    ["GYA20620-GYA20621-dispute"],
+                    0,
+                    1
+                ]
+            }
+        },
+        {
+            "id": "CapitaisMiami_settlement-label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:featureComponent": "place-labels",
+                "mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
+            "minzoom": 4,
+            "maxzoom": 15,
+            "layout": {
+                "text-line-height": 1.1,
+                "text-size": [
+                    "interpolate",
+                    ["cubic-bezier", 0.2, 0, 0.9, 1],
+                    ["zoom"],
+                    3,
+                    [
+                        "step",
+                        ["get", "symbolrank"],
+                        12,
+                        9,
+                        11,
+                        10,
+                        10.5,
+                        12,
+                        9.5,
+                        14,
+                        8.5,
+                        16,
+                        6.5,
+                        17,
+                        4
+                    ],
+                    5,
+                    [
+                        "step",
+                        ["get", "symbolrank"],
+                        28,
+                        7,
+                        18,
+                        9,
+                        16,
+                        10,
+                        23,
+                        11,
+                        21,
+                        12,
+                        20,
+                        13,
+                        19,
+                        15,
+                        17
+                    ],
+                    7,
+                    [
+                        "step",
+                        ["get", "symbolrank"],
+                        28,
+                        9,
+                        16,
+                        10,
+                        23,
+                        11,
+                        16,
+                        12,
+                        20,
+                        13,
+                        19,
+                        15,
+                        17
+                    ],
+                    15,
+                    [
+                        "step",
+                        ["get", "symbolrank"],
+                        28,
+                        9,
+                        26,
+                        10,
+                        23,
+                        11,
+                        21,
+                        12,
+                        20,
+                        13,
+                        19,
+                        15,
+                        17
+                    ]
+                ],
+                "text-allow-overlap": true,
+                "icon-image": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Willemstad", "Oranjestad", "Amsterdam"],
+                        "border-dot-13",
+                        ["Miami"],
+                        "dot-11",
+                        ""
+                    ],
+                    5,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Willemstad", "Oranjestad", "Amsterdam"],
+                        "border-dot-13",
+                        ["Miami"],
+                        "PtoBranco_circle-11",
+                        ""
+                    ],
+                    6,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Oranjestad", "Amsterdam", "Willemstad"],
+                        "border-dot-13",
+                        ["Miami"],
+                        "dot-11",
+                        ""
+                    ]
+                ],
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "text-justify": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "text_anchor"],
+                        ["left", "bottom-left", "top-left"],
+                        "left",
+                        ["right", "bottom-right", "top-right"],
+                        "right",
+                        "center"
+                    ],
+                    8,
+                    "center"
+                ],
+                "text-padding": 1,
+                "text-offset": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "capital"],
+                        2,
+                        [
+                            "match",
+                            ["get", "text_anchor"],
+                            "bottom",
+                            ["literal", [0, -0.3]],
+                            "bottom-left",
+                            ["literal", [0.3, -0.1]],
+                            "left",
+                            ["literal", [0.45, 0.1]],
+                            "top-left",
+                            ["literal", [0.3, 0.1]],
+                            "top",
+                            ["literal", [0, 0.3]],
+                            "top-right",
+                            ["literal", [-0.3, 0.1]],
+                            "right",
+                            ["literal", [-0.45, 0]],
+                            "bottom-right",
+                            ["literal", [-0.3, -0.1]],
+                            ["literal", [0, -0.3]]
+                        ],
+                        [
+                            "match",
+                            ["get", "text_anchor"],
+                            "bottom",
+                            ["literal", [0, -0.25]],
+                            "bottom-left",
+                            ["literal", [0.2, -0.05]],
+                            "left",
+                            ["literal", [0.4, 0.05]],
+                            "top-left",
+                            ["literal", [0.2, 0.05]],
+                            "top",
+                            ["literal", [0, 0.25]],
+                            "top-right",
+                            ["literal", [-0.2, 0.05]],
+                            "right",
+                            ["literal", [-0.4, 0.05]],
+                            "bottom-right",
+                            ["literal", [-0.2, -0.05]],
+                            ["literal", [0, -0.25]]
+                        ]
+                    ],
+                    8,
+                    ["literal", [0, 0]]
+                ],
+                "icon-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    0,
+                    1,
+                    5,
+                    0.5,
+                    6,
+                    1
+                ],
+                "text-anchor": [
+                    "step",
+                    ["zoom"],
+                    ["get", "text_anchor"],
+                    5,
+                    "bottom-right",
+                    8,
+                    "center"
+                ],
+                "text-field": ["get", "name"],
+                "text-max-width": 10
+            },
+            "paint": {
+                "icon-opacity": 0.9,
+                "text-halo-color": "hsl(0, 0%, 14%)",
+                "text-halo-blur": 1,
+                "text-opacity": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Miami", "Oranjestad", "Willemstad", "Amsterdam"],
+                        1,
+                        0
+                    ],
+                    3,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Miami", "Oranjestad", "Willemstad", "Amsterdam"],
+                        1,
+                        0
+                    ],
+                    6,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Miami", "Oranjestad", "Willemstad", "Amsterdam"],
+                        1,
+                        0
+                    ],
+                    7,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Miami", "Oranjestad", "Willemstad", "Amsterdam"],
+                        1,
+                        0
+                    ]
+                ],
+                "text-halo-width": 0.7,
+                "text-translate": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    5.49,
+                    ["literal", [-9, 5]],
+                    6,
+                    ["literal", [0, 0]],
+                    7,
+                    ["literal", [0, 24]]
+                ],
+                "text-color": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    5.49,
+                    "hsl(0, 0%, 100%)",
+                    6,
+                    "hsl(0, 0%, 76%)",
+                    7.63,
+                    "hsl(0, 0%, 76%)"
+                ]
+            }
+        },
+        {
+            "id": "Medellin_capital-departamento",
+            "type": "symbol",
+            "metadata": {"mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"},
+            "source": "composite",
+            "source-layer": "capital_departamento-8hhi3z",
+            "minzoom": 5,
+            "maxzoom": 12,
+            "filter": ["match", ["get", "nomecap"], ["Medellín"], true, false],
+            "layout": {
+                "text-field": ["to-string", ["get", "nomemun"]],
+                "text-size": 15,
+                "icon-image": [
+                    "step",
+                    ["zoom"],
+                    "dot-11",
+                    5,
+                    "PtoBranco_circle-11",
+                    6,
+                    "dot-11"
+                ],
+                "text-offset": [0, 0.9],
+                "icon-size": ["step", ["zoom"], 0.6, 5, 0.6, 6, 1],
+                "text-font": [
+                    "match",
+                    ["get", "nomecap"],
+                    ["Medellín"],
+                    [
+                        "literal",
+                        ["Open Sans SemiBold", "Arial Unicode MS Regular"]
+                    ],
+                    [
+                        "literal",
+                        ["Open Sans SemiBold", "Arial Unicode MS Regular"]
+                    ]
+                ],
+                "visibility": "none"
+            },
+            "paint": {
+                "text-color": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    5,
+                    "hsl(0, 0%, 100%)",
+                    6,
+                    "#c2c2c2"
+                ]
+            }
+        },
+        {
+            "id": "Caracas_capital-pais",
+            "type": "symbol",
+            "metadata": {"mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"},
+            "source": "composite",
+            "source-layer": "capital_pais-1sdywc",
+            "layout": {
+                "text-field": ["to-string", ["get", "nomecap"]],
+                "icon-image": "border-dot-13",
+                "text-offset": [0, 0.7]
+            },
+            "paint": {
+                "text-color": "hsl(0, 0%, 76%)",
+                "icon-opacity": ["match", ["get", "país"], ["VEN"], 0.8, 0],
+                "text-opacity": ["match", ["get", "país"], ["VEN"], 1, 0]
+            }
+        },
+        {
+            "id": "Bogota_capital-pais",
+            "type": "symbol",
+            "metadata": {"mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"},
+            "source": "composite",
+            "source-layer": "capital_pais-1sdywc",
+            "minzoom": 3,
+            "maxzoom": 12,
+            "filter": ["match", ["get", "nomecap"], ["Bogotá"], true, false],
+            "layout": {
+                "text-field": ["to-string", ["get", "nomecap"]],
+                "icon-image": [
+                    "step",
+                    ["zoom"],
+                    "border-dot-13",
+                    5,
+                    "capBranco_circle-stroked-11",
+                    6,
+                    "border-dot-13"
+                ],
+                "text-offset": [0, 0.7],
+                "text-font": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "literal",
+                        ["Open Sans Regular", "Arial Unicode MS Regular"]
+                    ],
+                    5,
+                    [
+                        "literal",
+                        ["Open Sans SemiBold", "Arial Unicode MS Regular"]
+                    ],
+                    6,
+                    [
+                        "literal",
+                        ["Open Sans Regular", "Arial Unicode MS Regular"]
+                    ]
+                ],
+                "text-size": 15,
+                "icon-size": ["step", ["zoom"], 0.7, 5, 0.7, 6, 1],
+                "visibility": "none"
+            },
+            "paint": {
+                "text-color": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    5,
+                    "hsl(0, 0%, 100%)",
+                    6,
+                    "hsl(0, 0%, 76%)"
+                ]
+            }
+        },
+        {
+            "id": "ArcoMinero_mineria_LABEL",
+            "type": "symbol",
+            "metadata": {"mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"},
+            "source": "composite",
+            "source-layer": "mineria",
+            "minzoom": 4,
+            "layout": {
+                "text-field": ["to-string", ["get", "nombre"]],
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "text-allow-overlap": [
+                    "step",
+                    ["zoom"],
+                    true,
+                    5,
+                    true,
+                    6,
+                    false
+                ],
+                "text-offset": [-9, 0.4],
+                "text-size": 18,
+                "text-letter-spacing": 0.01,
+                "text-padding": 1
+            },
+            "paint": {
+                "text-opacity": [
+                    "match",
+                    ["get", "nombre"],
+                    ["Arco Minero"],
+                    1,
+                    0
+                ],
+                "text-color": "#c9c9c9",
+                "text-halo-width": 0.3,
+                "text-halo-color": "hsl(0, 0%, 23%)",
+                "text-halo-blur": 0.5
+            }
+        },
+        {
+            "id": "cidadesfronteraCO",
+            "type": "symbol",
+            "metadata": {"mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"},
+            "source": "composite",
+            "source-layer": "CidadesFronteraCOIni",
+            "minzoom": 4,
+            "maxzoom": 12,
+            "layout": {
+                "text-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    5,
+                    12,
+                    5.4,
+                    13,
+                    6,
+                    15
+                ],
+                "icon-image": [
+                    "step",
+                    ["zoom"],
+                    "dot-11",
+                    5,
+                    "dot-11",
+                    6,
+                    "PtoBranco_circle-11",
+                    7,
+                    "dot-11"
+                ],
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "visibility": "none",
+                "text-offset": [-0.5, 0],
+                "icon-size": ["step", ["zoom"], 0, 5, 0.9, 6, 0.5, 7, 1],
+                "text-anchor": "right",
+                "text-field": ["coalesce", ["get", "name"]],
+                "text-max-width": 6
+            },
+            "paint": {
+                "text-color": [
+                    "step",
+                    ["zoom"],
+                    "#c2c2c2",
+                    5.4,
+                    "#c2c2c2",
+                    6,
+                    "hsl(0, 0%, 100%)",
+                    7.5,
+                    "#c2c2c2"
+                ],
+                "icon-opacity": 0.9
+            }
+        },
+        {
+            "id": "El Callao_cidades-principais-6gbant",
+            "type": "symbol",
+            "metadata": {"mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"},
+            "source": "composite",
+            "source-layer": "cidades_principais-6gbant",
+            "minzoom": 4,
+            "filter": [
+                "match",
+                ["get", "nomemun"],
+                ["El Callao", "Paraguachón", "Cúcuta"],
+                true,
+                false
+            ],
+            "layout": {
+                "text-size": 15,
+                "text-allow-overlap": true,
+                "icon-offset": [0, 0],
+                "icon-image": [
+                    "step",
+                    ["zoom"],
+                    "PtoBranco_circle-11",
+                    5.611,
+                    "PtoBranco_circle-11",
+                    6,
+                    "PtoBranco_circle-11",
+                    7,
+                    "dot-11"
+                ],
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "text-padding": 1,
+                "text-offset": [0, 0.7],
+                "icon-size": ["step", ["zoom"], 0.5, 5.4, 0.5, 5.6, 0.6, 7, 1],
+                "text-field": ["to-string", ["get", "nomemun"]]
+            },
+            "paint": {
+                "text-color": [
+                    "step",
+                    ["zoom"],
+                    "hsl(0, 0%, 100%)",
+                    5.49,
+                    "#c2c2c2",
+                    5.6,
+                    "hsl(0, 0%, 100%)",
+                    6.5,
+                    "#c2c2c2"
+                ],
+                "icon-opacity": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    0,
+                    0.9,
+                    5.49,
+                    0.4,
+                    5.6,
+                    0.9,
+                    7,
+                    0.9
+                ],
+                "text-halo-width": 0,
+                "text-halo-color": "hsl(0, 0%, 3%)",
+                "text-halo-blur": 0.3
+            }
+        },
+        {
+            "id": "country-label-",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:featureComponent": "place-labels",
+                "mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
+            "minzoom": 3,
+            "maxzoom": 12,
+            "filter": ["==", ["get", "class"], "country"],
+            "layout": {
+                "text-line-height": 2,
+                "text-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    ["match", ["get", "iso_3166_1"], ["AW", "CW"], 10, 16],
+                    4,
+                    15,
+                    5,
+                    ["match", ["get", "name"], ["United States"], 18, 17],
+                    6,
+                    20,
+                    7,
+                    22
+                ],
+                "text-allow-overlap": [
+                    "step",
+                    ["zoom"],
+                    true,
+                    3,
+                    true,
+                    5,
+                    false
+                ],
+                "text-transform": "uppercase",
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "text-justify": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "text_anchor"],
+                        ["left", "bottom-left", "top-left"],
+                        "left",
+                        ["right", "bottom-right", "top-right"],
+                        "right",
+                        "center"
+                    ],
+                    7,
+                    "center"
+                ],
+                "text-offset": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "text_anchor"],
+                        "bottom",
+                        ["literal", [0, -0.25]],
+                        "bottom-left",
+                        ["literal", [0.2, -0.05]],
+                        "left",
+                        ["literal", [0.4, 0.05]],
+                        "top-left",
+                        ["literal", [0.2, 0.05]],
+                        "top",
+                        ["literal", [0, 0.25]],
+                        "top-right",
+                        ["literal", [-0.2, 0.05]],
+                        "right",
+                        ["literal", [-0.4, 0.05]],
+                        "bottom-right",
+                        ["literal", [-0.2, -0.05]],
+                        ["literal", [0, -0.25]]
+                    ],
+                    3,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela"],
+                        ["literal", [0.3, -1.2]],
+                        ["Nederland"],
+                        ["literal", [0, -1.3]],
+                        ["literal", [0, 0]]
+                    ],
+                    5,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela"],
+                        ["literal", [-3, -2]],
+                        ["Aruba", "Curaçao"],
+                        ["literal", [0, -0.8]],
+                        ["United States"],
+                        ["literal", [7, 1.5]],
+                        ["literal", [0, 0]]
+                    ],
+                    6,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Aruba", "Curaçao"],
+                        ["literal", [1, -2]],
+                        ["Venezuela"],
+                        ["literal", [-2, -3]],
+                        ["Colombia"],
+                        ["literal", [10, -3]],
+                        ["literal", [0, 0]]
+                    ],
+                    7,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Aruba"],
+                        ["literal", [1, -1.9]],
+                        ["Curaçao"],
+                        ["literal", [1, -3]],
+                        ["literal", [0, 0]]
+                    ]
+                ],
+                "text-anchor": [
+                    "step",
+                    ["zoom"],
+                    ["coalesce", ["get", "text_anchor"], "center"],
+                    7,
+                    "center"
+                ],
+                "text-field": ["coalesce", ["get", "name_pt"], ["get", "name"]],
+                "text-max-width": 12
+            },
+            "paint": {
+                "text-opacity": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela", "Colombia", "United States"],
+                        0.7,
+                        ["Aruba ", "Curaçao", "Nederland"],
+                        1,
+                        0
+                    ],
+                    3,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela", "Colombia", "United States"],
+                        0.7,
+                        ["Aruba ", "Curaçao", "Nederland"],
+                        1,
+                        0
+                    ],
+                    5,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Colombia", "United States"],
+                        1,
+                        ["Curaçao", "Aruba", "Nederland"],
+                        0,
+                        ["Venezuela"],
+                        0.7,
+                        0
+                    ],
+                    6,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela", "Colombia", "United States", "Nederland"],
+                        1,
+                        ["Aruba", "Curaçao"],
+                        0,
+                        0
+                    ],
+                    7,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela", "Colombia", "United States", "Nederland"],
+                        0.51,
+                        ["Aruba", "Curaçao"],
+                        1,
+                        0
+                    ]
+                ],
+                "text-color": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3.3,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Nederland", "Aruba", "Curaçao"],
+                        "hsl(0, 0%, 92%)",
+                        "hsl(0, 0%, 54%)"
+                    ],
+                    5.49,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["United States", "Colombia"],
+                        "#c2c2c2",
+                        "hsl(0, 0%, 54%)"
+                    ],
+                    7.56,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Aruba", "Curaçao"],
+                        "#ebebeb",
+                        "hsl(0, 0%, 54%)"
+                    ],
+                    12,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Nederland"],
+                        "hsl(0, 0%, 54%)",
+                        "hsl(0, 0%, 54%)"
+                    ]
+                ],
+                "text-halo-color": "hsl(0, 0%, 14%)",
+                "icon-opacity": [
+                    "match",
+                    ["get", "name"],
+                    [
+                        "Colombia",
+                        "Venezuela",
+                        "Aruba",
+                        "Curaçao",
+                        "United States",
+                        "Nederlands"
+                    ],
+                    0,
+                    0
+                ],
+                "text-halo-width": 0.3
+            }
+        },
+        {
+            "id": "VE_country-label",
+            "type": "symbol",
+            "metadata": {
+                "mapbox:featureComponent": "place-labels",
+                "mapbox:group": "dae213f8070bc16dbbeb3e9e2e63e9c5"
+            },
+            "source": "composite",
+            "source-layer": "place_label",
+            "maxzoom": 12.3,
+            "filter": ["==", ["get", "class"], "country"],
+            "layout": {
+                "text-line-height": 1.2,
+                "text-size": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    3,
+                    ["match", ["get", "name"], ["Nederland"], 10, 14],
+                    4,
+                    15,
+                    5,
+                    17,
+                    6,
+                    20,
+                    7,
+                    22
+                ],
+                "icon-image": "dot-11",
+                "text-transform": "uppercase",
+                "text-font": ["Open Sans SemiBold", "Arial Unicode MS Regular"],
+                "text-justify": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "text_anchor"],
+                        ["left", "bottom-left", "top-left"],
+                        "left",
+                        ["right", "bottom-right", "top-right"],
+                        "right",
+                        "center"
+                    ],
+                    7,
+                    "center"
+                ],
+                "visibility": "none",
+                "text-offset": [
+                    "step",
+                    ["zoom"],
+                    [
+                        "match",
+                        ["get", "text_anchor"],
+                        "bottom",
+                        ["literal", [0, -0.25]],
+                        "bottom-left",
+                        ["literal", [0.2, -0.05]],
+                        "left",
+                        ["literal", [0.4, 0.05]],
+                        "top-left",
+                        ["literal", [0.2, 0.05]],
+                        "top",
+                        ["literal", [0, 0.25]],
+                        "top-right",
+                        ["literal", [-0.2, 0.05]],
+                        "right",
+                        ["literal", [-0.4, 0.05]],
+                        "bottom-right",
+                        ["literal", [-0.2, -0.05]],
+                        ["literal", [0, -0.25]]
+                    ],
+                    3,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela"],
+                        ["literal", [0.3, -1.2]],
+                        ["literal", [0, 0]]
+                    ],
+                    5,
+                    [
+                        "match",
+                        ["get", "name"],
+                        ["Venezuela"],
+                        ["literal", [-4, -3]],
+                        ["literal", [0, 0]]
+                    ]
+                ],
+                "text-anchor": [
+                    "step",
+                    ["zoom"],
+                    ["coalesce", ["get", "text_anchor"], "center"],
+                    7,
+                    "center"
+                ],
+                "text-field": ["coalesce", ["get", "name_pt"], ["get", "name"]],
+                "text-max-width": 10
+            },
+            "paint": {
+                "text-opacity": ["match", ["get", "name"], ["Venezuela"], 1, 0],
+                "text-color": "hsl(0, 0%, 54%)",
+                "text-halo-color": "hsl(0, 0%, 14%)",
+                "icon-opacity": [
+                    "match",
+                    ["get", "name"],
+                    [
+                        "Colombia",
+                        "Venezuela",
+                        "Aruba",
+                        "Curaçao",
+                        "United States",
+                        "Nederlands"
+                    ],
+                    0,
+                    0
+                ],
+                "text-halo-width": 0.9,
+                "text-translate": [0, 0]
+            }
+        },
+        {
+            "id": "PNYapacana_nacionales",
+            "type": "line",
+            "source": "composite",
+            "source-layer": "nacionales",
+            "minzoom": 4,
+            "maxzoom": 12,
+            "filter": ["match", ["get", "nombre"], ["Yapacana"], true, false],
+            "layout": {"visibility": "none"},
+            "paint": {
+                "line-color": "hsl(172, 74%, 36%)",
+                "line-gap-width": 0,
+                "line-blur": 0,
+                "line-width": 2
+            }
+        },
+        {
+            "id": "PNYapacana_nacionales_LABEL",
+            "type": "symbol",
+            "source": "composite",
+            "source-layer": "nacionales",
+            "minzoom": 4,
+            "maxzoom": 12,
+            "filter": ["match", ["get", "nombre"], ["Yapacana"], true, false],
+            "layout": {
+                "text-field": ["concat", "PN", " ", ["get", "nombre"]],
+                "text-size": 14,
+                "text-font": ["Roboto Regular", "Arial Unicode MS Regular"],
+                "text-max-width": 10,
+                "text-line-height": 1,
+                "text-offset": [
+                    "interpolate",
+                    ["linear"],
+                    ["zoom"],
+                    0,
+                    ["literal", [1.1, 2.4]],
+                    5,
+                    ["literal", [1.1, 2.4]],
+                    6,
+                    ["literal", [1, 3]]
+                ],
+                "text-justify": "left",
+                "visibility": "none"
+            },
+            "paint": {
+                "text-color": "#18a08e",
+                "text-halo-width": 0,
+                "text-halo-color": "hsl(0, 0%, 23%)"
+            }
+        },
+        {
+            "id": "arrows-merged",
+            "type": "fill",
+            "source": "composite",
+            "source-layer": "Arrows_merged_Yap-4dsic3",
+            "minzoom": 2.9,
+            "maxzoom": 12,
+            "layout": {"visibility": "none"},
+            "paint": {"fill-color": "hsl(344, 91%, 50%)"}
+        }
+    ],
+    "created": "2019-07-06T00:39:28.363Z",
+    "id": "cjxqsvsg00mvv1clhwyypn82y",
+    "modified": "2019-07-07T01:38:02.081Z",
+    "owner": "infoamazonia",
+    "visibility": "private",
+    "draft": false
+}

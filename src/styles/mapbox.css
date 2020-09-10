@@ -1,0 +1,114 @@
+.control-panel {
+    padding:0.5rem;
+    width:16rem;
+    position:absolute;
+    right: 0;   
+    /* margin-left: 20rem; */
+}
+
+.control-panel-padding {
+    padding:0.5rem;
+}
+
+.control-panel h5 {
+    font-size:1rem;
+    margin:0;
+    display: inline;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.control-panel div span {
+    display:inline-block;
+    width:0.8vw;
+    height:0.8vw;
+    margin-right: 0.2rem;
+}
+
+.control-panel .mapbox_control-panel_subtitle {
+    text-align:left;
+    font-size:0.8rem;
+}
+
+.control-panel label {
+    font-size:0.8rem;
+    font-family: Helvetica, Arial, sans-serif !important;
+}
+
+.control-panel label span {
+    font-size:1.5rem;
+    margin-left: 0.5rem;
+    color:#C0C0C0;
+    position: relative;
+    top:5px;
+}
+
+.mapbox_legend-block {
+    display:block;
+    float:left
+}
+
+.mapbox_legend-align-center {
+    text-align:center
+}
+
+.mapbox_legend-btn-close {
+   position: relative;
+   left:6.4rem;
+   color: #333;
+}
+
+.mapbox_legend-ico {
+    background-color: #fff;
+    padding:10px;   
+}
+
+.mapbox_legend-button {
+        background-color: #fff; /* Green */
+        border: none;
+        color: #000;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+}
+
+.mapbox_legend-button:focus,.mapbox_legend-button:active {
+    outline: none !important;
+    box-shadow: none;
+ }
+
+.mapbox_custom-checkbox-colored_1 {
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .mapbox_custom-checkbox-colored_1:after {
+    content: " ";
+    background-color: #b350f1;
+    display: inline-block;
+    visibility: visible;
+  }
+  
+  .mapbox_custom-checkbox-colored_1:checked:after {
+    padding:0.5rem;
+  }
+
+  .mapbox_custom-checkbox-colored_2 {
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .mapbox_custom-checkbox-colored_2:after {
+    content: " ";
+    background-color: #d65205;
+    display: inline-block;
+    visibility: visible;
+  }
+  
+  .mapbox_custom-checkbox-colored_2:checked:after {
+    padding:0.5rem;
+  }

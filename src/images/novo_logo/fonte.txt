@@ -1,0 +1,7 @@
+Formatação fonte
+
+fonte-family: cinzel;
+font-size: 39px;
+line-height: 45px;
+font_weight: 700px; (para o texto bold)
+font_weight: 400px; (para o texto normal)

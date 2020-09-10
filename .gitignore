@@ -1,0 +1,10 @@
+build
+node_modules
+public
+.git
+design
+files/photos/raw
+.DS_Store
+layercomproblema.js
+mapbox-intro.html
+mapbox-intro_1207.html
