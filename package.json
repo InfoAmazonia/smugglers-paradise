@@ -9,7 +9,9 @@
     "setup": "rm -rf public/*",
     "build": "npm run setup && webpack --config webpack.config.js -d --env production",
     "watch": "npm run setup && webpack --config webpack.config.js --watch",
-    "deploy": "npm run build && cp public/index.html public/404.html && gh-pages -d public",
+    "clean": "gh-pages-clean",
+    "predeploy": "NODE_ENV=production npm run build",
+    "deploy": "gh-pages -d public",
     "manage:translations": "node ./translationRunner.js"
   },
   "repository": {
@@ -87,7 +89,7 @@
     "css-loader": "0.28.7",
     "favicons-webpack-plugin": "0.0.7",
     "file-loader": "2.0.0",
-    "gh-pages": "1.0.0",
+    "gh-pages": "^1.0.0",
     "html-loader": "0.5.1",
     "html-webpack-plugin": "2.30.1",
     "imports-loader": "0.7.1",
