@@ -1,94 +1,92 @@
-# Infoamazonia - Arco Mineiro 2
+# Smugglers Paradise
 
-Versão do REACT: 16.0.0
+Special report "Venezuela, the smugglers' paradise", built as a hotsite made in React
 
-# PRÉ REQUISITOS
-- Instalar o docker: https://docs.docker.com/install/
-- Instalar o git: https://git-scm.com/downloads
+## Installation
 
-# INSTALAÇÃO DO SITE
+### Requirements
 
-- CLONANDO O SITE DO GITHUB
-git clone https://github.com/studiocuboweb/arcomineiro2.git
+- node v10.1.x
+- npm v5.6.x
 
-- INSTALANDO O NPM E AS DEPENDENCIAS
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 yarn install<br/>
+### Build and start server
 
-- BugFix
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 yarn upgrade<br/>
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 yarn global add webpack@3.6.0<br/>
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 yarn add -D webpack-cli@2.0.4<br/><br/>
+Install dependencies:
+```
+$ npm install
+```
 
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 yarn remove webpack<br/>
-docker run -v "$PWD":/usr/src/app -w /usr/src/app node:8 yarn remove webpack-cli<br/>
+Create dist folder and compile project
+```
+$ npm run predeploy
+```
 
-- FAZENDO O BUILD
-docker-compose build
+Access [http://localhost:3002/](http://localhost:3002/)
 
-
-# LIGANDO O DOCKER
-docker-compose up (com visualização de log)
-docker-compose up -d (rodar em background)
-
-# DESLIGANDO O DOCKER
-docker-compose down
+Watch files
+```
+$ npm run watch
+```
 
 
-# HEROKU DEPLOY
-https://blog.heroku.com/deploying-react-with-zero-configuration
+### Deploy app to GITHUB PAGES
 
-# INSTALAR HEROKU:
-https://devcenter.heroku.com/articles/heroku-cli
+```
+$ npm run deploy
+```
 
-- Logar no heroku com o login e senha cadastrados no site
-heroku login
+OBS: open src/CNAME and change domain if needed
 
-- verificando APP atual
-heroku apps:info
+# RUNING WITH DOCKER
 
+Install environment and dependencies
+```
+$ docker-compose build --no-cache
+```
 
-#HEROKU BASH
-- heroku run bash
+Starting docker
+```
+$ docker-compose up
+```
+Create public folder and compile project (in docker bash)
+```
+docker$ npm run predeploy
+```
 
-# DEPLOY EM infoam-template-video
-https://infoam-template-video.herokuapp.com/
+Access [http://localhost:3002/](http://localhost:3002/)
 
-heroku git:remote -a infoam-template-multimedia
-git checkout related-news
-git push heroku master
+### Deploy app to GITHUB PAGES
 
-# DEPLOY EM infoam-template-multimedia
-https://infoam-template-multimedia.herokuapp.com/
+```
+docker$ npm run deploy
+```
 
-heroku git:remote -a infoam-template-video
-git checkout template-video
-git push heroku master
+### NOTES
+- If you use 2FA (2 factor authentication) on git hub, [follow these steps](https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8).
+  
+- When using docker you can use watch for save and auto compile files when developing. For this you have to copy dist and node_modules from docker to host and uncomment volumes in docker-compose.yml file. The steps are:
 
-# DEPLOY EM ifoam-template-mapas
-https://infoam-template-multimedia.herokuapp.com/
+1. Copy dist and node_modules from docker to host (when docker-compose is up and running using bash from host)
+$ docker cp $(docker-compose ps -q app):/usr/src/app/node_modules .
+$ docker cp $(docker-compose ps -q app):/usr/src/app/yarn.lock .
+$ docker cp $(docker-compose ps -q app):/usr/src/app/public .
 
-heroku git:remote -a ifoam-template-mapas
-git checkout template-mapa
-git push heroku master
+2. Uncomment dist and node_modules folder from .dockerignore file
 
-# OUTROS PROCEDIMENTOS:
-- Apagando o local Storage do browser:
-Abrir o console dev do browser e rodar:
-localStorage.clear()
-localStorage.removeItem('elapsed-time')
+3. Uncomment Volumes from docker-compose.yml
 
-#BUILD EM PRODUCAO SEM DOCKER
-1- Instalar o yarn (falei node, mas estamos utilizando o yarn)
-https://yarnpkg.com/lang/en/docs/install/#debian-stable
+4. docker-compose down
 
-2- Instalar as dependências
-Na raiz do projeto onde está o package.json rodar o comando:
+5. docker-compose up
 
-yarn install
+6. Inside docker bash: docker-compose exec app bash
+```
+docker$ npm run watch
+```
 
-Vai instalar as dependencias na pasta node_modules 
+### CREDITS
+[rafgraph](https://github.com/rafgraph/spa-github-pages) for the 404.html redirect (rewrite rule for github pages). It works! <br>
+[Natalie Cardot](https://medium.com/@nataliecardot/easily-deploy-a-create-react-app-project-to-github-pages-280529adb086) how to easily Deploy a Create React App Project to GitHub Pages. <br>
+[Ginny Fahs](https://medium.com/@ginnyfahs/github-error-authentication-failed-from-command-line-3a545bfd0ca8) how to authenticate on github with 2FA.<br>
+[Paulo Campos at Studio Cubo Web](https://github.com/studiocuboweb) for converting this site into github pages host
 
-3- Fazer o build
-na raiz do projeto rodar o comando:
-
-npm run build
