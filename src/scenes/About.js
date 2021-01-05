@@ -205,7 +205,9 @@ const About = ({ intl, lastPath }) => {
             <br />Lisseth Boon (Runrun.es)
             <br />Maaike Goslinga (De Correspondent)
             <br />María Ramírez Cabello (Correo del Caroní)
+            <br />Marnix de Bruyne (De Correspondent)
             <br />Nancy San Martin (Miami Herald)
+            <br />Rosan Smits (De Correspondent)
           </Paragraph>
 
           <Paragraph>
