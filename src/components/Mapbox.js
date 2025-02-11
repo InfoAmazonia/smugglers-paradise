@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Dimensions from 'react-dimensions';
 import Fullscreenable from 'react-fullscreenable';
 
-const MAPBOX_TOKEN = 'pk.eyJ1IjoiaW5mb2FtYXpvbmlhIiwiYSI6InItajRmMGsifQ.JnRnLDiUXSEpgn7bPDzp7g'; // Set your mapbox token here
+const MAPBOX_TOKEN = 'pk.eyJ1IjoiaW5mb2FtYXpvbmlhIiwiYSI6ImNtNzB5YWc2MzA3aWUya3ByMHkyYm54eXUifQ.twxY-J7bMuqjDUlSAIPoag'; // Set your mapbox token here
 
 class MapBox extends Component {
 
